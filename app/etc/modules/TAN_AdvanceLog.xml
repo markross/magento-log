@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<TrueAction_AdvanceLog>
+			<active>true</active>
+			<codePool>local</codePool>
+		</TrueAction_AdvanceLog>
+	</modules>
+</config> 

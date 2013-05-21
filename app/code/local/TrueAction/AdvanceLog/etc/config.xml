@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * @category    TrueAction
+ * @package     TrueAction_AdvanceLog
+ * @copyright   Copyright (c) 2013 True Action (http://www.trueaction.com)
+ */
+-->
+<config>
+	<modules>
+		<TrueAction_AdvanceLog>
+			<version>1.0.0</version>
+		</TrueAction_AdvanceLog>
+	</modules>
+	<global>
+		<models>
+			<advancelog>
+				<class>TrueAction_AdvanceLog_Model</class>
+		    </advancelog>
+		</models>
+		<helpers>
+			<trueaction_advancelog>
+				<class>TrueAction_AdvanceLog_Helper</class>
+			</trueaction_advancelog>
+		</helpers>
+		<log>
+            <core>
+                <writer_model>TrueAction_AdvanceLog_Model_Stream</writer_model>
+            </core>
+        </log>
+	</global>
+	<frontend>
+		<routers>
+			<advancelog>
+				<args>
+					<modules>
+						<TrueAction_AdvanceLog before="Mage_AdvanceLog">TrueAction_AdvanceLog</TrueAction_AdvanceLog>
+					</modules>
+				</args>
+			</advancelog>
+		</routers>
+	</frontend>
+	<adminhtml>
+        <layout>
+            <updates>
+                <trueaction_advancelog>
+                    <file>trueaction_advancelog.xml</file>
+                </trueaction_advancelog>
+            </updates>
+        </layout>
+    </adminhtml>
+	<phpunit>
+		<suite>
+			<modules>
+				<TrueAction_AdvanceLog />
+			</modules>
+		</suite>
+	</phpunit>
+</config>

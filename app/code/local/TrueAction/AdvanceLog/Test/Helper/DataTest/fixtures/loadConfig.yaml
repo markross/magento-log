@@ -1,0 +1,44 @@
+tables:
+  core/config_data:
+tables:
+  core/config_data:
+    - config_id: 70
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/active"
+      value: 1
+    - config_id: 261
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/file"
+      value: "system.log"
+    - config_id: 262
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/exception_file"
+      value: "exception.log"
+    - config_id: 1020
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/log_level"
+      value: 3
+    - config_id: 1021
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/enable_email_logging"
+      value: 1
+    - config_id: 1022
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/logging_email_address"
+      value: "GabrielR@TrueAction.com"
+    - config_id: 1023
+      scope: "default"
+      scope_id: 0
+      path: "dev/log/email_logging_level"
+      value: 2
+    - config_id: 181
+      scope: "default"
+      scope_id: 0
+      path: "trans_email/ident_general/email"
+      value: "GabrielR@trueaction.com"
