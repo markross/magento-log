@@ -23,6 +23,25 @@ class TrueAction_AdvanceLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_C
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
+	public function testLogException()
+	{
+		// empty file exception log
+		file_put_contents(Mage::getBaseDir('var') . '/log/exception.log', '');
+		try{
+			throw new Exception('Advance Log Exception Error');
+		}catch(Exception $e){
+			Mage::logException($e);
+			$this->assertNotEmpty(
+				file_get_contents(Mage::getBaseDir('var') . '/log/exception.log')
+			);
+		}
+	}
+
+	/**
+	 *
+	 * @test
+	 * @loadFixture loadConfig.yaml
+	 */
 	public function testWhenLogLevelIsEmerg()
 	{
 		// Create log empty file
