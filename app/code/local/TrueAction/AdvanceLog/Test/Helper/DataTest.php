@@ -41,12 +41,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing isActive method
+	 * testing isActive method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function isActive($store=null)
 	{
 		$this->assertTrue(
@@ -55,12 +55,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getSystemLogFile method
+	 * testing getSystemLogFile method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function getSystemLogFile($store=null)
 	{
 		$this->assertSame(
@@ -70,12 +70,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getExceptionLogFile method
+	 * testing getExceptionLogFile method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function getExceptionLogFile($store=null)
 	{
 		$this->assertSame(
@@ -85,12 +85,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getLogLevel method
+	 * testing getLogLevel method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function getLogLevel($store=null)
 	{
 		$this->assertSame(
@@ -100,12 +100,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing isEnableEmailLogging method
+	 * testing isEnableEmailLogging method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function isEnableEmailLogging($store=null)
 	{
 		$this->assertTrue(
@@ -114,12 +114,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getLoggingEmailAddress method
+	 * testing getLoggingEmailAddress method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function getLoggingEmailAddress($store=null)
 	{
 		$this->assertSame(
@@ -129,12 +129,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getEmailLoggingLevel method
+	 * testing getEmailLoggingLevel method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function getEmailLoggingLevel($store=null)
 	{
 		$this->assertSame(
@@ -144,12 +144,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getFromEmail method
+	 * testing getFromEmail method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
-     */
+	 */
 	public function getFromEmail($store=null)
 	{
 		$this->assertSame(
@@ -159,11 +159,11 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	}
 
 	/**
-     * testing getLogFile method
+	 * testing getLogFile method
 	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
-     */
+	 */
 	public function getLogFile()
 	{
 		$this->assertSame(

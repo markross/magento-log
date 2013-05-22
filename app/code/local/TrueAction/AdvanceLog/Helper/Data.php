@@ -17,8 +17,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	const ADVANCELOG_DEV_LOG_FROM_EMAIL = 'trans_email/ident_general/email';
 
 	/**
-     * isActive method
-     */
+	 * isActive method
+	 */
 	public function isActive($store=null)
 	{
 		return Mage::getStoreConfigFlag (
@@ -28,8 +28,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * getSystemLogFile method
-     */
+	 * getSystemLogFile method
+	 */
 	public function getSystemLogFile($store=null)
 	{
 		return Mage::getStoreConfig (
@@ -39,8 +39,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * getExceptionLogFile method
-     */
+	 * getExceptionLogFile method
+	 */
 	public function getExceptionLogFile($store=null)
 	{
 		return Mage::getStoreConfig (
@@ -50,8 +50,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * getLogLevel method
-     */
+	 * getLogLevel method
+	 */
 	public function getLogLevel($store=null)
 	{
 		return (int) Mage::getStoreConfig (
@@ -61,8 +61,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * isEnableEmailLogging method
-     */
+	 * isEnableEmailLogging method
+	 */
 	public function isEnableEmailLogging($store=null)
 	{
 		return Mage::getStoreConfigFlag (
@@ -72,8 +72,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * getLoggingEmailAddress method
-     */
+	 * getLoggingEmailAddress method
+	 */
 	public function getLoggingEmailAddress($store=null)
 	{
 		return Mage::getStoreConfig (
@@ -83,8 +83,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * getEmailLoggingLevel method
-     */
+	 * getEmailLoggingLevel method
+	 */
 	public function getEmailLoggingLevel($store=null)
 	{
 		return (int) Mage::getStoreConfig (
@@ -94,8 +94,8 @@ class TrueAction_AdvanceLog_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	/**
-     * getFromEmail method
-     */
+	 * getFromEmail method
+	 */
 	public function getFromEmail($store=null)
 	{
 		return Mage::getStoreConfig (
