@@ -48,7 +48,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function isActive($store=null)
+	public function testIsActive($store=null)
 	{
 		$this->assertTrue(
 			$this->_getHelper()->isActive($store)
@@ -62,7 +62,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function getSystemLogFile($store=null)
+	public function testGetSystemLogFile($store=null)
 	{
 		$this->assertSame(
 			'system.log',
@@ -77,7 +77,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function getExceptionLogFile($store=null)
+	public function testGetExceptionLogFile($store=null)
 	{
 		$this->assertSame(
 			'exception.log',
@@ -92,7 +92,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function getLogLevel($store=null)
+	public function testGetLogLevel($store=null)
 	{
 		$this->assertSame(
 			3,
@@ -107,7 +107,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function isEnableEmailLogging($store=null)
+	public function testIsEnableEmailLogging($store=null)
 	{
 		$this->assertTrue(
 			$this->_getHelper()->isEnableEmailLogging($store)
@@ -121,7 +121,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function getLoggingEmailAddress($store=null)
+	public function testGetLoggingEmailAddress($store=null)
 	{
 		$this->assertSame(
 			'GabrielR@TrueAction.com',
@@ -136,7 +136,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function getEmailLoggingLevel($store=null)
+	public function testGetEmailLoggingLevel($store=null)
 	{
 		$this->assertSame(
 			2,
@@ -151,7 +151,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @loadFixture loadConfig.yaml
 	 * @dataProvider providerStoreView
 	 */
-	public function getFromEmail($store=null)
+	public function testGetFromEmail($store=null)
 	{
 		$this->assertSame(
 			'GabrielR@trueaction.com',
@@ -165,7 +165,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
-	public function getLogFile()
+	public function testGetLogFile()
 	{
 		$this->assertSame(
 			Mage::getBaseDir('var') . '/log/system.log',
