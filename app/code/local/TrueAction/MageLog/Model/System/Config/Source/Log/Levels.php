@@ -17,7 +17,7 @@ class TrueAction_MageLog_Model_System_Config_Source_Log_Levels
 	public function toOptionArray()
 	{
 		$r = new ReflectionClass('Zend_Log');
-        $priorities = array_flip($r->getConstants());
+		$priorities = array_flip($r->getConstants());
 		$idx = 0;
 		$results = array();
 		foreach($priorities as $priority){
