@@ -16,15 +16,17 @@ class TrueAction_MageLog_Model_System_Config_Source_Log_Levels
 	 */
 	public function toOptionArray()
 	{
-		return array(
-			array('value' => 0, 'label' => 'EMERG => Emergency: system is unusable'),
-			array('value' => 1, 'label' => 'ALERT => Alert: action must be taken immediately'),
-			array('value' => 2, 'label' => 'CRIT => Critical: critical conditions'),
-			array('value' => 3, 'label' => 'ERR => Error: error conditions'),
-			array('value' => 4, 'label' => 'WARNING => Warning: warning conditions'),
-			array('value' => 5, 'label' => 'NOTICE => Notice: normal but significant condition'),
-			array('value' => 6, 'label' => 'INFO => Informational: informational messages'),
-			array('value' => 7, 'label' => 'DEBUG => Debug: debug messages'),
-		);
+		$r = new ReflectionClass('Zend_Log');
+        $priorities = array_flip($r->getConstants());
+		$idx = 0;
+		$results = array();
+		foreach($priorities as $priority){
+			$results[] = array(
+				'value' => $idx,
+				'label' => $priority
+			);
+			$idx++;
+		}
+		return $results;
 	}
 }
