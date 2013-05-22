@@ -33,15 +33,12 @@ class TrueAction_MageLog_Test_Model_System_Config_Source_Log_LevelsTest extends 
 	public function testToOptionArray()
 	{
 		$r = new ReflectionClass('Zend_Log');
-		$priorities = array_flip($r->getConstants());
-		$idx = 0;
 		$results = array();
-		foreach($priorities as $priority){
+		foreach($r->getConstants() as $label => $value) {
 			$results[] = array(
-				'value' => $idx,
-				'label' => $priority
+				'value' => $value,
+				'label' => $label
 			);
-			$idx++;
 		}
 
 		$this->assertSame(
