@@ -21,7 +21,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function isActive($store=null)
 	{
-		return Mage::getStoreConfigFlag (
+		return Mage::getStoreConfigFlag(
 			self::MAGELOG_DEV_LOG_ACTIVE,
 			$store
 		);
@@ -32,7 +32,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getSystemLogFile($store=null)
 	{
-		return Mage::getStoreConfig (
+		return Mage::getStoreConfig(
 			self::MAGELOG_DEV_LOG_FILE,
 			$store
 		);
@@ -43,7 +43,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getExceptionLogFile($store=null)
 	{
-		return Mage::getStoreConfig (
+		return Mage::getStoreConfig(
 			self::MAGELOG_DEV_LOG_EXCEPTION_FILE,
 			$store
 		);
@@ -54,7 +54,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getLogLevel($store=null)
 	{
-		return (int) Mage::getStoreConfig (
+		return (int) Mage::getStoreConfig(
 			self::MAGELOG_DEV_LOG_LOG_LEVEL,
 			$store
 		);
@@ -65,7 +65,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function isEnableEmailLogging($store=null)
 	{
-		return Mage::getStoreConfigFlag (
+		return Mage::getStoreConfigFlag(
 			self::MAGELOG_DEV_LOG_ENABLE_EMAIL_LOGGING,
 			$store
 		);
@@ -76,7 +76,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getLoggingEmailAddress($store=null)
 	{
-		return Mage::getStoreConfig (
+		return Mage::getStoreConfig(
 			self::MAGELOG_DEV_LOG_LOGGING_EMAIL_ADDRESS,
 			$store
 		);
@@ -87,7 +87,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getEmailLoggingLevel($store=null)
 	{
-		return (int) Mage::getStoreConfig (
+		return (int) Mage::getStoreConfig(
 			self::MAGELOG_DEV_LOG_EMAIL_LOGGING_LEVEL,
 			$store
 		);
@@ -98,7 +98,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getFromEmail($store=null)
 	{
-		return Mage::getStoreConfig (
+		return Mage::getStoreConfig(
 			self::MAGELOG_DEV_LOG_FROM_EMAIL,
 			$store
 		);
