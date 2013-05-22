@@ -38,6 +38,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 				return array(array($storeView));
 			}
 		}
+		return array(array(null));
 	}
 
 	/**
