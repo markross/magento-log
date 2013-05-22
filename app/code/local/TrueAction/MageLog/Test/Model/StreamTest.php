@@ -25,6 +25,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	 */
 	public function testLogException()
 	{
+		// Note: we already tested 'exception.log' file exists in the config in unit test DataTest::testGetExceptionLogFile
 		// empty file exception log
 		file_put_contents(Mage::getBaseDir('var') . '/log/exception.log', '');
 		try{
