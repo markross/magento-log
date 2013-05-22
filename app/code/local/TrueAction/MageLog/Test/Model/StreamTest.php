@@ -1,10 +1,10 @@
 <?php
 /**
  * @category   TrueAction
- * @package    TrueAction_AdvanceLog
+ * @package    TrueAction_MageLog
  * @copyright  Copyright (c) 2012 True Action Network (http://www.trueaction.com)
  */
-class TrueAction_AdvanceLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
+class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 {
 	protected $_stream;
 
@@ -14,7 +14,7 @@ class TrueAction_AdvanceLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_C
 	public function setUp()
 	{
 		parent::setUp();
-		$this->_stream = Mage::getModel('advancelog/stream');
+		$this->_stream = Mage::getModel('magelog/stream');
 		Mage::app()->getConfig()->reinit(); // re-initialize config to get fresh loaded data
 	}
 

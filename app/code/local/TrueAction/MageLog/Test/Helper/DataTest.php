@@ -1,10 +1,10 @@
 <?php
 /**
  * @category  TrueAction
- * @package   TrueAction_AdvanceLog
+ * @package   TrueAction_MageLog
  * @copyright Copyright (c) 2013 True Action (http://www.trueaction.com)
  */
-class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
+class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 {
 	protected $_helper;
 
@@ -21,12 +21,12 @@ class TrueAction_AdvanceLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Ca
 	/**
 	 * Get helper instantiated object.
 	 *
-	 * @return TrueAction_AdvanceLog_Helper_Data
+	 * @return TrueAction_MageLog_Helper_Data
 	 */
 	protected function _getHelper()
 	{
 		if (!$this->_helper) {
-			$this->_helper = Mage::helper('trueaction_advancelog');
+			$this->_helper = Mage::helper('trueaction_magelog');
 		}
 		return $this->_helper;
 	}

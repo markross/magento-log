@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * @category    TrueAction
+ * @package     TrueAction_MageLog
+ * @copyright   Copyright (c) 2013 True Action (http://www.trueaction.com)
+ */
+-->
+<config>
+	<modules>
+		<TrueAction_MageLog>
+			<version>1.0.0</version>
+		</TrueAction_MageLog>
+	</modules>
+	<global>
+		<models>
+			<magelog>
+				<class>TrueAction_MageLog_Model</class>
+		    </magelog>
+		</models>
+		<helpers>
+			<trueaction_magelog>
+				<class>TrueAction_MageLog_Helper</class>
+			</trueaction_magelog>
+		</helpers>
+		<log>
+            <core>
+                <writer_model>TrueAction_MageLog_Model_Stream</writer_model>
+            </core>
+        </log>
+	</global>
+	<frontend>
+		<routers>
+			<magelog>
+				<args>
+					<modules>
+						<TrueAction_MageLog before="Mage_MageLog">TrueAction_MageLog</TrueAction_MageLog>
+					</modules>
+				</args>
+			</magelog>
+		</routers>
+	</frontend>
+	<adminhtml>
+        <layout>
+            <updates>
+                <trueaction_magelog>
+                    <file>trueaction_magelog.xml</file>
+                </trueaction_magelog>
+            </updates>
+        </layout>
+    </adminhtml>
+	<phpunit>
+		<suite>
+			<modules>
+				<TrueAction_MageLog />
+			</modules>
+		</suite>
+	</phpunit>
+</config>

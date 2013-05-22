@@ -1,10 +1,10 @@
 <?php
 /**
  * @category   TrueAction
- * @package    TrueAction_AdvanceLog
+ * @package    TrueAction_MageLog
  * @copyright  Copyright (c) 2012 True Action Network (http://www.trueaction.com)
  */
-class TrueAction_AdvanceLog_Test_Model_System_Config_Source_Log_LevelsTest extends EcomDev_PHPUnit_Test_Case
+class TrueAction_MageLog_Test_Model_System_Config_Source_Log_LevelsTest extends EcomDev_PHPUnit_Test_Case
 {
 	protected $_levels;
 
@@ -20,7 +20,7 @@ class TrueAction_AdvanceLog_Test_Model_System_Config_Source_Log_LevelsTest exten
 	protected function _getLevels()
 	{
 		if(!$this->_levels){
-			$this->_levels = mage::getModel('advancelog/system_config_source_log_levels');
+			$this->_levels = mage::getModel('magelog/system_config_source_log_levels');
 		}
 		return $this->_levels;
 	}
