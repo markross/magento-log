@@ -1,3 +1,3 @@
 # magelog
 src/app/etc/modules/*.xml app/etc/modules/
-src/app/code/local/TrueAction/magelog app/code/local/TrueAction/magelog
+src/app/code/community/TrueAction/MageLog app/code/community/TrueAction/MageLog
