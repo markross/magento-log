@@ -17,7 +17,7 @@
 		<models>
 			<magelog>
 				<class>TrueAction_MageLog_Model</class>
-		    </magelog>
+			</magelog>
 		</models>
 		<helpers>
 			<trueaction_magelog>
@@ -25,10 +25,10 @@
 			</trueaction_magelog>
 		</helpers>
 		<log>
-            <core>
-                <writer_model>TrueAction_MageLog_Model_Stream</writer_model>
-            </core>
-        </log>
+			<core>
+				<writer_model>TrueAction_MageLog_Model_Stream</writer_model>
+			</core>
+		</log>
 	</global>
 	<frontend>
 		<routers>
@@ -42,14 +42,14 @@
 		</routers>
 	</frontend>
 	<adminhtml>
-        <layout>
-            <updates>
-                <trueaction_magelog>
-                    <file>trueaction_magelog.xml</file>
-                </trueaction_magelog>
-            </updates>
-        </layout>
-    </adminhtml>
+		<layout>
+			<updates>
+				<trueaction_magelog>
+					<file>trueaction_magelog.xml</file>
+				</trueaction_magelog>
+			</updates>
+		</layout>
+	</adminhtml>
 	<phpunit>
 		<suite>
 			<modules>
