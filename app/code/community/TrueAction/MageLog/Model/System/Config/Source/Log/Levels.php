@@ -1,11 +1,8 @@
 <?php
 /**
- * @category TrueAction
- * @package TrueAction_MageLog
- * @copyright Copyright (c) 2013 True Action Network (http://www.trueaction.com)
- * @author TrueAction
- * @license TrueAction
- * @link http://www.trueaction.com
+ * @category   TrueAction
+ * @package    TrueAction_MageLog
+ * @copyright  Copyright (c) 2013 True Action Network (http://www.trueaction.com)
  */
 class TrueAction_MageLog_Model_System_Config_Source_Log_Levels
 {
