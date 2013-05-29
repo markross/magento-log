@@ -19,7 +19,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -39,7 +38,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -61,7 +59,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -83,7 +80,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -105,7 +101,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -127,7 +122,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -149,7 +143,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -171,7 +164,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
@@ -193,7 +185,6 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	}
 
 	/**
-	 *
 	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
