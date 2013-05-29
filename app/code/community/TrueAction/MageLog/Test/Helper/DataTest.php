@@ -10,7 +10,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 
 	/**
 	 * setUp method
-	 **/
+	 */
 	public function setUp()
 	{
 		parent::setUp();
