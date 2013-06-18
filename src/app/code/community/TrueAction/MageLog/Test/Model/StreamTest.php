@@ -14,6 +14,29 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function setUp()
 	{
 		parent::setUp();
+
+		// checking if var directory exists, if not, then create it
+		if (!is_dir(Mage::getBaseDir('var'))) {
+			umask(0);
+			mkdir(Mage::getBaseDir('var'), 0777, true);
+		}
+
+		// checking if log directory exists, if not, then create it
+		if (!is_dir(Mage::getBaseDir('log'))) {
+			umask(0);
+			mkdir(Mage::getBaseDir('log'), 0777, true);
+		}
+
+		// checking if var/log/system.log file exist, if not create it
+		if (!file_exists(Mage::getBaseDir('log') . DS . 'system.log')) {
+			file_put_contents(Mage::getBaseDir('log') . DS . 'system.log', '');
+		}
+
+		// checking if var/log/exception.log file exist, if not create it
+		if (!file_exists(Mage::getBaseDir('log') . DS . 'exception.log')) {
+			file_put_contents(Mage::getBaseDir('log') . DS . 'exception.log', '');
+		}
+
 		$this->_stream = Mage::getModel('magelog/stream');
 		Mage::app()->getConfig()->reinit(); // re-initialize config to get fresh loaded data
 	}
@@ -26,13 +49,13 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	{
 		// Note: we already tested 'exception.log' file exists in the config in unit test DataTest::testGetExceptionLogFile
 		// empty file exception log
-		file_put_contents(Mage::getBaseDir('var') . '/log/exception.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'exception.log', '');
 		try{
-			throw new Exception('Advance Log Exception Error');
+			throw new Exception('Mage Log Exception Error');
 		}catch(Exception $e){
 			Mage::logException($e);
 			$this->assertNotEmpty(
-				file_get_contents(Mage::getBaseDir('var') . '/log/exception.log')
+				file_get_contents(Mage::getBaseDir('log') . DS . 'exception.log')
 			);
 		}
 	}
@@ -44,7 +67,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsEmerg()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 0 - EMERG
 		Mage::log(
@@ -54,7 +77,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertNotEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -65,7 +88,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsAlert()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 1 - ALERT
 		Mage::log(
@@ -75,7 +98,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertNotEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -86,7 +109,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsCrit()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 2 - CRIT
 		Mage::log(
@@ -96,7 +119,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertNotEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -107,7 +130,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsErr()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 3 - ERR
 		Mage::log(
@@ -117,7 +140,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertNotEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -128,7 +151,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsWarn()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 4 - WARN
 		Mage::log(
@@ -138,7 +161,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -149,7 +172,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsNotice()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 5 - NOTICE
 		Mage::log(
@@ -159,7 +182,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -170,7 +193,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsInfo()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 6 - INFO
 		Mage::log(
@@ -180,7 +203,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 
@@ -191,7 +214,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 	public function testWhenLogLevelIsDebug()
 	{
 		// Create log empty file
-		file_put_contents(Mage::getBaseDir('var') . '/log/unit_test.log', '');
+		file_put_contents(Mage::getBaseDir('log') . DS . 'unit_test.log', '');
 
 		// Testing level 7 - DEBUG
 		Mage::log(
@@ -201,7 +224,7 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		);
 
 		$this->assertEmpty(
-			file_get_contents(Mage::getBaseDir('var') . '/log/unit_test.log')
+			file_get_contents(Mage::getBaseDir('log') . DS . 'unit_test.log')
 		);
 	}
 }

@@ -106,9 +106,7 @@ class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function getLogFile()
 	{
-		return Mage::getBaseDir('var') .
-			DS .
-			'log' .
+		return Mage::getBaseDir('log') .
 			DS .
 			$this->getSystemLogFile();
 	}

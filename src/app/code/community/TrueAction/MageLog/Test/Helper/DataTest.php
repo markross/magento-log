@@ -168,7 +168,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	public function testGetLogFile()
 	{
 		$this->assertSame(
-			Mage::getBaseDir('var') . '/log/system.log',
+			Mage::getBaseDir('log') . DS . 'system.log',
 			$this->_getHelper()->getLogFile()
 		);
 	}
