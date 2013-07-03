@@ -50,6 +50,14 @@
 			</updates>
 		</layout>
 	</adminhtml>
+	<default>
+		<dev>
+			<log>
+				<log_level>6</log_level>
+				<email_logging_level>2</email_logging_level>
+			</log>
+		</dev>
+	</default>
 	<phpunit>
 		<suite>
 			<modules>
