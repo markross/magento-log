@@ -5,7 +5,7 @@
     <resources>
       <default_setup>
         <connection>
-          <dbname>jenkins_mage_log</dbname>
+          <dbname>jenkins_mage_magelog</dbname>
         </connection>
       </default_setup>
     </resources>

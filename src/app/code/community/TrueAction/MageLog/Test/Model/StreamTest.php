@@ -38,7 +38,22 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		}
 
 		$this->_stream = Mage::getModel('magelog/stream');
-		Mage::app()->getConfig()->reinit(); // re-initialize config to get fresh loaded data
+	}
+
+	/**
+	 * @test
+	 * @loadFixture loadConfig.yaml
+	 */
+	public function testConfig()
+	{
+		$this->assertSame('1', Mage::getStoreConfig('dev/log/active'));
+		$this->assertSame('system.log', Mage::getStoreConfig('dev/log/file'));
+		$this->assertSame('exception.log', Mage::getStoreConfig('dev/log/exception_file'));
+		$this->assertSame('3', Mage::getStoreConfig('dev/log/log_level'));
+		$this->assertSame('1', Mage::getStoreConfig('dev/log/enable_email_logging'));
+		$this->assertSame('GabrielR@TrueAction.com', Mage::getStoreConfig('dev/log/logging_email_address'));
+		$this->assertSame('2', Mage::getStoreConfig('dev/log/email_logging_level'));
+		$this->assertSame('GabrielR@trueaction.com', Mage::getStoreConfig('trans_email/ident_general/email'));
 	}
 
 	/**

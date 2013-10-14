@@ -15,7 +15,6 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	{
 		parent::setUp();
 		$this->_helper = $this->_getHelper();
-		Mage::app()->getConfig()->reinit(); // re-initialize config to get fresh loaded data
 	}
 
 	/**
@@ -33,11 +32,6 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 
 	public function providerStoreView()
 	{
-		foreach (Mage::app()->getStores(true) as $storeView) {
-			if ($storeView->getCode() !== 'admin') {
-				return array(array($storeView));
-			}
-		}
 		return array(array(null));
 	}
 
