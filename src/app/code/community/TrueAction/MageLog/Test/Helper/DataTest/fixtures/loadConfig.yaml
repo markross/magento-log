@@ -1,9 +1,9 @@
 config:
   default/dev/log/active: 1
-  default/dev/log/file: system.log
-  default/dev/log/exception_file: exception.log
+  default/dev/log/file: systemdotlog
+  default/dev/log/exception_file: exceptiondotlog
   default/dev/log/log_level: 3
   default/dev/log/enable_email_logging: 1
-  default/dev/log/logging_email_address: GabrielR@TrueAction.com
+  default/dev/log/logging_email_address: nobody@example.com
   default/dev/log/email_logging_level: 2
-  default/trans_email/ident_general/email: GabrielR@trueaction.com
+  default/trans_email/ident_general/email: nobody@example.com

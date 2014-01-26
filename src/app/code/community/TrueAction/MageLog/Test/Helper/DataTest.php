@@ -1,169 +1,142 @@
 <?php
-/**
- * @category  TrueAction
- * @package   TrueAction_MageLog
- * @copyright Copyright (c) 2013 True Action (http://www.trueaction.com)
- */
 class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 {
-	protected $_helper;
-
+	const HELPER = 'trueaction_magelog';
 	/**
-	 * setUp method
+	 * Provide null as the store view. This is slightly better than not providing
+	 * anything because it lets you know that these configuration values can change
+	 * at the store view level, but we don't currently test that.
 	 */
-	public function setUp()
-	{
-		parent::setUp();
-		$this->_helper = $this->_getHelper();
-	}
-
-	/**
-	 * Get helper instantiated object.
-	 *
-	 * @return TrueAction_MageLog_Helper_Data
-	 */
-	protected function _getHelper()
-	{
-		if (!$this->_helper) {
-			$this->_helper = Mage::helper('trueaction_magelog');
-		}
-		return $this->_helper;
-	}
-
-	public function providerStoreView()
+	public function provideStoreView()
 	{
 		return array(array(null));
 	}
-
 	/**
-	 * testing isActive method
+	 * Test that the configuration returns the expected isActive value from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testIsActive($store=null)
 	{
-		$this->assertTrue(
-			$this->_getHelper()->isActive($store)
-		);
+		$this->assertSame(true, Mage::helper(self::HELPER)->isActive($store));
 	}
-
 	/**
-	 * testing getSystemLogFile method
+	 * Test that the configuration returns the expected system.log file name from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testGetSystemLogFile($store=null)
 	{
-		$this->assertSame(
-			'system.log',
-			$this->_getHelper()->getSystemLogFile($store)
-		);
+		$this->assertSame('systemdotlog', Mage::helper(self::HELPER)->getSystemLogFile($store));
 	}
-
 	/**
-	 * testing getExceptionLogFile method
+	 * Test that the configuration returns the expected exception.log file name from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testGetExceptionLogFile($store=null)
 	{
-		$this->assertSame(
-			'exception.log',
-			$this->_getHelper()->getExceptionLogFile($store)
-		);
+		$this->assertSame('exceptiondotlog', Mage::helper(self::HELPER)->getExceptionLogFile($store));
 	}
-
 	/**
-	 * testing getLogLevel method
+	 * Test that the configuration returns the expected log level from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testGetLogLevel($store=null)
 	{
-		$this->assertSame(
-			3,
-			$this->_getHelper()->getLogLevel($store)
-		);
+		$this->assertSame(3, Mage::helper(self::HELPER)->getLogLevel($store));
 	}
-
 	/**
-	 * testing isEnableEmailLogging method
+	 * Test that the configuration returns the value from the fixture on whether or not email logging is enabled.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testIsEnableEmailLogging($store=null)
 	{
-		$this->assertTrue(
-			$this->_getHelper()->isEnableEmailLogging($store)
-		);
+		$this->assertTrue(Mage::helper(self::HELPER)->isEnableEmailLogging($store));
 	}
-
 	/**
-	 * testing getLoggingEmailAddress method
+	 * Test that the configuration returns the expected logging target email address from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testGetLoggingEmailAddress($store=null)
 	{
-		$this->assertSame(
-			'GabrielR@TrueAction.com',
-			$this->_getHelper()->getLoggingEmailAddress($store)
-		);
+		$this->assertSame('nobody@example.com', Mage::helper(self::HELPER)->getLoggingEmailAddress($store));
 	}
-
 	/**
-	 * testing getEmailLoggingLevel method
+	 * Test that the configuration returns the expected email loglevel from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testGetEmailLoggingLevel($store=null)
 	{
-		$this->assertSame(
-			2,
-			$this->_getHelper()->getEmailLoggingLevel($store)
-		);
+		$this->assertSame(2, Mage::helper(self::HELPER)->getEmailLoggingLevel($store));
 	}
-
 	/**
-	 * testing getFromEmail method
+	 * Test that the configuration returns the expected "from" email address from the fixture.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
-	 * @dataProvider providerStoreView
+	 * @dataProvider provideStoreView
 	 */
 	public function testGetFromEmail($store=null)
 	{
-		$this->assertSame(
-			'GabrielR@trueaction.com',
-			$this->_getHelper()->getFromEmail($store)
-		);
+		$this->assertSame('nobody@example.com', Mage::helper(self::HELPER)->getFromEmail($store));
 	}
-
 	/**
-	 * testing getLogFile method
+	 * Test that the configuration returns the expected path to the system log file.
 	 *
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testGetLogFile()
 	{
+		$this->assertSame(Mage::getBaseDir('log') . DS . 'systemdotlog', Mage::helper(self::HELPER)->getLogFile());
+	}
+	/**
+	 * Provide arguments for testing log methods.
+	 */
+	public function provideLogMethodArguments()
+	{
+		return array(
+			array('[ %s ] %s message because %d', array(__CLASS__, 'foo', 7)),
+		);
+	}
+	/**
+	 * Test that we have a method for each Zend_Log const and that each calls _log with the right const.
+	 *
+	 * @dataProvider provideLogMethodArguments
+	 */
+	public function testLogMethods($format, $argSet)
+	{
+		$logger = $this->getHelperMock('trueaction_magelog/data', array('_log'));
+		$logger->expects($this->at(0))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::EMERG), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(1))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::ALERT), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(2))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::CRIT), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(3))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::ERR), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(4))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::WARN), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(5))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::NOTICE), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(6))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::INFO), $this->identicalTo($argSet))->will($this->returnSelf());
+		$logger->expects($this->at(7))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::DEBUG), $this->identicalTo($argSet))->will($this->returnSelf());
 		$this->assertSame(
-			Mage::getBaseDir('log') . DS . 'system.log',
-			$this->_getHelper()->getLogFile()
+			$logger,
+			$logger
+				->logEmerg($format, $argSet)
+				->logAlert($format, $argSet)
+				->logCrit($format, $argSet)
+				->logErr($format, $argSet)
+				->logWarn($format, $argSet)
+				->logNotice($format, $argSet)
+				->logInfo($format, $argSet)
+				->logDebug($format, $argSet)
 		);
 	}
 }
+

@@ -1,13 +1,16 @@
 <?php
 /**
- * @category   TrueAction
- * @package    TrueAction_MageLog
- * @copyright  Copyright (c) 2013 True Action Network (http://www.trueaction.com)
+ * Provide a list of legal Zend_Log log levels to the Magento Admin for configuration.
+ *
+ * @see       Zend_Log
+ * @category  TrueAction
+ * @package   TrueAction_MageLog
+ * @copyright Copyright (c) 2014 eBay Enterprise (http://ebayenterprise.com)
  */
 class TrueAction_MageLog_Model_System_Config_Source_Log_Levels
 {
 	/**
-	 * Options getter
+	 * Retrieve Zend_Log constants as log levels for Magento Admin.
 	 *
 	 * @return array
 	 */
@@ -21,7 +24,6 @@ class TrueAction_MageLog_Model_System_Config_Source_Log_Levels
 				'label' => $label
 			);
 		}
-
 		return $results;
 	}
 }
