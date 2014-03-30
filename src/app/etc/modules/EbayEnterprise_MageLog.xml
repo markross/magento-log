@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
 	<modules>
-		<TrueAction_MageLog>
+		<EbayEnterprise_MageLog>
 			<active>true</active>
 			<codePool>community</codePool>
-		</TrueAction_MageLog>
+		</EbayEnterprise_MageLog>
 	</modules>
 </config>

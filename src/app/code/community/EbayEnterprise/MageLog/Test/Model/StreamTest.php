@@ -1,10 +1,6 @@
 <?php
-/**
- * @category   TrueAction
- * @package    TrueAction_MageLog
- * @copyright  Copyright (c) 2013 True Action Network (http://www.trueaction.com)
- */
-class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
+
+class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 {
 	protected $_stream;
 
@@ -51,9 +47,9 @@ class TrueAction_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_Case
 		$this->assertSame('exception.log', Mage::getStoreConfig('dev/log/exception_file'));
 		$this->assertSame('3', Mage::getStoreConfig('dev/log/log_level'));
 		$this->assertSame('1', Mage::getStoreConfig('dev/log/enable_email_logging'));
-		$this->assertSame('GabrielR@TrueAction.com', Mage::getStoreConfig('dev/log/logging_email_address'));
+		$this->assertSame('GabrielR@ebay.com', Mage::getStoreConfig('dev/log/logging_email_address'));
 		$this->assertSame('2', Mage::getStoreConfig('dev/log/email_logging_level'));
-		$this->assertSame('GabrielR@trueaction.com', Mage::getStoreConfig('trans_email/ident_general/email'));
+		$this->assertSame('GabrielR@ebay.com', Mage::getStoreConfig('trans_email/ident_general/email'));
 	}
 
 	/**

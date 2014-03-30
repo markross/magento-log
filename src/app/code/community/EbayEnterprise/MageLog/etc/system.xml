@@ -1,11 +1,4 @@
 <?xml version="1.0"?>
-<!--
-/**
- * @category    TrueAction
- * @package     TrueAction_MageLog
- * @copyright   Copyright (c) 2013 True Action (http://www.trueaction.com)
- */
--->
 <config>
 	<sections>
 		<dev>

@@ -2,11 +2,11 @@
 /**
  * Provide self-contained logging methods that can easily be overridden and mocked.
  *
- * @category  TrueAction
- * @package   TrueAction_MageLog
+ * @category  EbayEnterprise
+ * @package   EbayEnterprise_MageLog
  * @copyright Copyright (c) 2014 eBay Enterprise (http://ebayenterprise.com)
  */
-class TrueAction_MageLog_Helper_Data extends Mage_Core_Helper_Abstract {
+class EbayEnterprise_MageLog_Helper_Data extends Mage_Core_Helper_Abstract {
 	const MAGELOG_DEV_LOG_ACTIVE = 'dev/log/active';
 	const MAGELOG_DEV_LOG_FILE = 'dev/log/file';
 	const MAGELOG_DEV_LOG_EXCEPTION_FILE = 'dev/log/exception_file';

@@ -3,11 +3,11 @@
  * Provide a list of legal Zend_Log log levels to the Magento Admin for configuration.
  *
  * @see       Zend_Log
- * @category  TrueAction
- * @package   TrueAction_MageLog
+ * @category  EbayEnterprise
+ * @package   EbayEnterprise_MageLog
  * @copyright Copyright (c) 2014 eBay Enterprise (http://ebayenterprise.com)
  */
-class TrueAction_MageLog_Model_System_Config_Source_Log_Levels
+class EbayEnterprise_MageLog_Model_System_Config_Source_Log_Levels
 {
 	/**
 	 * Retrieve Zend_Log constants as log levels for Magento Admin.

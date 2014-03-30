@@ -1,7 +1,7 @@
 <?php
-class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
+class EbayEnterprise_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 {
-	const HELPER = 'trueaction_magelog';
+	const HELPER = 'ebayenterprise_magelog';
 	/**
 	 * Provide null as the store view. This is slightly better than not providing
 	 * anything because it lets you know that these configuration values can change
@@ -116,7 +116,7 @@ class TrueAction_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 	 */
 	public function testLogMethods($format, $argSet)
 	{
-		$logger = $this->getHelperMock('trueaction_magelog/data', array('_log'));
+		$logger = $this->getHelperMock('ebayenterprise_magelog/data', array('_log'));
 		$logger->expects($this->at(0))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::EMERG), $this->identicalTo($argSet))->will($this->returnSelf());
 		$logger->expects($this->at(1))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::ALERT), $this->identicalTo($argSet))->will($this->returnSelf());
 		$logger->expects($this->at(2))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::CRIT), $this->identicalTo($argSet))->will($this->returnSelf());

@@ -1,23 +1,18 @@
 <?php
-/**
- * @category   TrueAction
- * @package    TrueAction_MageLog
- * @copyright  Copyright (c) 2013 True Action Network (http://www.trueaction.com)
- */
 
-class TrueAction_MageLog_Model_Stream extends Zend_Log_Writer_Stream
+class EbayEnterprise_MageLog_Model_Stream extends Zend_Log_Writer_Stream
 {
 	protected $_helper;
 
 	/**
 	 * Get helper instantiated object.
 	 *
-	 * @return TrueAction_MageLog_Helper_Data
+	 * @return EbayEnterprise_MageLog_Helper_Data
 	 */
 	protected function _getHelper()
 	{
 		if (!$this->_helper) {
-			$this->_helper = new TrueAction_MageLog_Helper_Data;
+			$this->_helper = new EbayEnterprise_MageLog_Helper_Data;
 		}
 		return $this->_helper;
 	}

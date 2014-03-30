@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-/**
- *
- * @category    TrueAction
- * @package     TrueAction_MageLog
- * @copyright   Copyright (c) 2013 True Action (http://www.trueaction.com)
- */
--->
 <config>
 	<modules>
-		<TrueAction_MageLog>
+		<EbayEnterprise_MageLog>
 			<version>1.0.0</version>
-		</TrueAction_MageLog>
+		</EbayEnterprise_MageLog>
 	</modules>
 	<global>
 		<models>
 			<magelog>
-				<class>TrueAction_MageLog_Model</class>
+				<class>EbayEnterprise_MageLog_Model</class>
 			</magelog>
 		</models>
 		<helpers>
-			<trueaction_magelog>
-				<class>TrueAction_MageLog_Helper</class>
-			</trueaction_magelog>
+			<ebayenterprise_magelog>
+				<class>EbayEnterprise_MageLog_Helper</class>
+			</ebayenterprise_magelog>
 		</helpers>
 		<log>
 			<core>
-				<writer_model>TrueAction_MageLog_Model_Stream</writer_model>
+				<writer_model>EbayEnterprise_MageLog_Model_Stream</writer_model>
 			</core>
 		</log>
 	</global>
@@ -35,7 +27,7 @@
 			<magelog>
 				<args>
 					<modules>
-						<TrueAction_MageLog before="Mage_MageLog">TrueAction_MageLog</TrueAction_MageLog>
+						<EbayEnterprise_MageLog before="Mage_MageLog">EbayEnterprise_MageLog</EbayEnterprise_MageLog>
 					</modules>
 				</args>
 			</magelog>
@@ -44,9 +36,9 @@
 	<adminhtml>
 		<layout>
 			<updates>
-				<trueaction_magelog>
-					<file>trueaction_magelog.xml</file>
-				</trueaction_magelog>
+				<ebayenterprise_magelog>
+					<file>ebayenterprise_magelog.xml</file>
+				</ebayenterprise_magelog>
 			</updates>
 		</layout>
 	</adminhtml>
@@ -61,7 +53,7 @@
 	<phpunit>
 		<suite>
 			<modules>
-				<TrueAction_MageLog />
+				<EbayEnterprise_MageLog />
 			</modules>
 		</suite>
 	</phpunit>
