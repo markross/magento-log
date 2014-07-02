@@ -38,7 +38,6 @@ class EbayEnterprise_MageLog_Test_Model_System_Config_Source_Log_LevelsTest exte
 	/**
 	 * testing toOptionArray
 	 *
-	 * @test
 	 */
 	public function testToOptionArray()
 	{

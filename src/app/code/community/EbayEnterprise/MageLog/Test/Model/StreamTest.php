@@ -51,7 +51,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testConfig()
@@ -67,7 +66,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testLogException()
@@ -86,7 +84,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsEmerg()
@@ -107,7 +104,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsAlert()
@@ -128,7 +124,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsCrit()
@@ -149,7 +144,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsErr()
@@ -170,7 +164,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsWarn()
@@ -191,7 +184,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsNotice()
@@ -212,7 +204,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsInfo()
@@ -233,7 +224,6 @@ class EbayEnterprise_MageLog_Test_Model_StreamTest extends EcomDev_PHPUnit_Test_
 	}
 
 	/**
-	 * @test
 	 * @loadFixture loadConfig.yaml
 	 */
 	public function testWhenLogLevelIsDebug()
