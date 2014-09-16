@@ -1,40 +1,41 @@
 {
-	"name": "ebayenterprise/magento-with-log",
-	"description": "eBay Enterprise Magento Logging and Convenience Tool",
-	"license": "OSL-3.0",
-	"type": "project",
-	"require": {
-		"ebayenterprise/magento-log": "dev-master",
-		"ecomdev/ecomdev_phpunit": "~0.3",
-		"pdepend/pdepend": "~1.1",
-		"phpdocumentor/phpdocumentor":"~2.4",
-		"phploc/phploc": "~2.0",
-		"phpmd/phpmd": "~1.5",
-		"phpunit/dbunit": "~1",
-		"phpunit/php-invoker": "~1.1",
-		"phpunit/phpunit-selenium": "~1",
-		"phpunit/phpunit-story": "~1",
-		"sebastian/phpcpd": "~2.0",
-		"squizlabs/php_codesniffer": "~1.5"
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "http://packages.firegento.com"
-		},
-		{
-			"type": "vcs",
-			"url": "/home/stack/git/EcomDev_PHPUnit.git"
-		},
-		{
-			"type": "vcs",
-			"url": "/home/stack/git/magento-log.git"
-		}
-	],
-	"extra": {
-		"magento-deploystrategy": "copy",
-		"magento-root-dir": "build/magento"
-	}
+    "name": "ebayenterprise/magento-with-log", 
+    "license": "OSL-3.0", 
+    "extra": {
+        "magento-deploystrategy": "copy", 
+        "magento-root-dir": "build/magento"
+    }, 
+    "require": {
+        "ecomdev/ecomdev_phpunit": "~0.3", 
+        "sebastian/phpcpd": "~2.0", 
+        "mikey179/vfsStream": "~1.0", 
+        "phpunit/dbunit": "~1", 
+        "phpmd/phpmd": "~1.5", 
+        "ebayenterprise/magento-log": "dev-master", 
+        "phpunit/phpunit-story": "~1", 
+        "pdepend/pdepend": "~1.1", 
+        "phpdocumentor/phpdocumentor": "~2.4", 
+        "squizlabs/php_codesniffer": "~1.5", 
+        "phpunit/phpunit-selenium": "~1", 
+        "phploc/phploc": "~2.0", 
+        "phpunit/php-invoker": "~1.1"
+    }, 
+    "description": "eBay Enterprise Magento Logging and Convenience Tool", 
+    "repositories": [
+        {
+            "url": "http://packages.firegento.com", 
+            "type": "composer"
+        }, 
+        {
+            "url": "/home/stack/git/EcomDev_PHPUnit.git", 
+            "type": "vcs"
+        }, 
+        {
+            "url": "/home/stack/git/magento-log.git", 
+            "type": "vcs"
+        }
+    ], 
+    "prefer-stable": true, 
+    "type": "project", 
+    "minimum-stability": "dev"
 }
