@@ -1,156 +1,122 @@
 <?php
 /**
  * Copyright (c) 2013-2014 eBay Enterprise, Inc.
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the Open Software License (OSL 3.0)
  * that is bundled with this package in the file LICENSE.md.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/osl-3.0.php
- * 
+ *
  * @copyright   Copyright (c) 2013-2014 eBay Enterprise, Inc. (http://www.ebayenterprise.com/)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+use Psr\Log\LogLevel;
 
 class EbayEnterprise_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_Case
 {
-	const HELPER = 'ebayenterprise_magelog';
-	/**
-	 * Provide null as the store view. This is slightly better than not providing
-	 * anything because it lets you know that these configuration values can change
-	 * at the store view level, but we don't currently test that.
-	 */
-	public function provideStoreView()
+	/** @var EbayEnterprise_MageLog_Helper_Data $_helper */
+	protected $_helper;
+
+	public function setUp()
 	{
-		return array(array(null));
-	}
-	/**
-	 * Test that the configuration returns the expected isActive value from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testIsActive($store=null)
-	{
-		$this->assertSame(true, Mage::helper(self::HELPER)->isActive($store));
-	}
-	/**
-	 * Test that the configuration returns the expected system.log file name from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testGetSystemLogFile($store=null)
-	{
-		$this->assertSame('systemdotlog', Mage::helper(self::HELPER)->getSystemLogFile($store));
-	}
-	/**
-	 * Test that the configuration returns the expected exception.log file name from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testGetExceptionLogFile($store=null)
-	{
-		$this->assertSame('exceptiondotlog', Mage::helper(self::HELPER)->getExceptionLogFile($store));
-	}
-	/**
-	 * Test that the configuration returns the expected log level from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testGetLogLevel($store=null)
-	{
-		$this->assertSame(3, Mage::helper(self::HELPER)->getLogLevel($store));
-	}
-	/**
-	 * Test that the configuration returns the value from the fixture on whether or not email logging is enabled.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testIsEnableEmailLogging($store=null)
-	{
-		$this->assertTrue(Mage::helper(self::HELPER)->isEnableEmailLogging($store));
-	}
-	/**
-	 * Test that the configuration returns the expected logging target email address from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testGetLoggingEmailAddress($store=null)
-	{
-		$this->assertSame('nobody@example.com', Mage::helper(self::HELPER)->getLoggingEmailAddress($store));
-	}
-	/**
-	 * Test that the configuration returns the expected email loglevel from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testGetEmailLoggingLevel($store=null)
-	{
-		$this->assertSame(2, Mage::helper(self::HELPER)->getEmailLoggingLevel($store));
-	}
-	/**
-	 * Test that the configuration returns the expected "from" email address from the fixture.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 * @dataProvider provideStoreView
-	 */
-	public function testGetFromEmail($store=null)
-	{
-		$this->assertSame('nobody@example.com', Mage::helper(self::HELPER)->getFromEmail($store));
-	}
-	/**
-	 * Test that the configuration returns the expected path to the system log file.
-	 *
-	 * @loadFixture loadConfig.yaml
-	 */
-	public function testGetLogFile()
-	{
-		$this->assertSame(Mage::getBaseDir('log') . DS . 'systemdotlog', Mage::helper(self::HELPER)->getLogFile());
+		parent::setUp();
+		$this->_helper = Mage::helper('ebayenterprise_magelog');
 	}
 	/**
 	 * Provide arguments for testing log methods.
 	 */
 	public function provideLogMethodArguments()
 	{
-		return array(
-			array('[ %s ] %s message because %d', array(__CLASS__, 'foo', 7)),
-		);
+		return [
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::EMERGENCY, 'emergency'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::ALERT, 'alert'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::CRITICAL, 'critical'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::ERROR, 'error'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::WARNING, 'warning'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::NOTICE, 'notice'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::INFO, 'info'],
+			['This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2'], LogLevel::DEBUG, 'debug'],
+		];
 	}
 	/**
-	 * Test that we have a method for each Zend_Log const and that each calls _log with the right const.
-	 *
+	 * Test that we have a method for each Psr\Log\LogLevel const and that each calls log with the right const.
+	 * @param string $message
+	 * @param array $context
 	 * @dataProvider provideLogMethodArguments
 	 */
-	public function testLogMethods($format, $argSet)
+	public function testLogMethods($message, $context, $level, $method)
 	{
-		$logger = $this->getHelperMock('ebayenterprise_magelog/data', array('_log'));
-		$logger->expects($this->at(0))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::EMERG), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(1))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::ALERT), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(2))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::CRIT), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(3))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::ERR), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(4))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::WARN), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(5))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::NOTICE), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(6))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::INFO), $this->identicalTo($argSet))->will($this->returnSelf());
-		$logger->expects($this->at(7))->method('_log')->with($this->identicalTo($format), $this->equalTo(Zend_Log::DEBUG), $this->identicalTo($argSet))->will($this->returnSelf());
-		$this->assertSame(
-			$logger,
-			$logger
-				->logEmerg($format, $argSet)
-				->logAlert($format, $argSet)
-				->logCrit($format, $argSet)
-				->logErr($format, $argSet)
-				->logWarn($format, $argSet)
-				->logNotice($format, $argSet)
-				->logInfo($format, $argSet)
-				->logDebug($format, $argSet)
-		);
+		$logger = $this->getHelperMock('ebayenterprise_magelog/data', ['log']);
+		$logger->expects($this->once())
+			->method('log')
+			->with(
+				$this->identicalTo($level),
+				$this->identicalTo($message),
+				$this->identicalTo($context)
+			)
+			->will($this->returnSelf());
+		$logger->$method($message, $context);
+	}
+	public function providerLog()
+	{
+		return [
+			[LogLevel::EMERGENCY, 'This a sample log message', ['key_1' => 'Key 1', 'key_2' => 'Key 2']],
+		];
+	}
+	/**
+	 * Test the method EbayEnterprise_MageLog_Helper_Data::log when invoked
+	 * will call the EbayEnterprise_MageLog_Model_Logger::log passing the proper
+	 * parameters.
+	 * @param int $level
+	 * @param string $message
+	 * @param array $context
+	 * @dataProvider providerLog
+	 */
+	public function testLog($level, $message, array $context)
+	{
+		$file = '';
+		$forceLog = false;
+		$logger = $this->getModelMock('ebayenterprise_magelog/logger', ['log']);
+		$logger->expects($this->once())
+			->method('log')
+			->with(
+				$this->identicalTo($message),
+				$this->identicalTo(Zend_Log::EMERG),
+				$this->identicalTo($file),
+				$this->identicalTo($forceLog),
+				$this->identicalTo($context)
+			)
+			->will($this->returnSelf());
+		$this->replaceByMock('model', 'ebayenterprise_magelog/logger', $logger);
+		EcomDev_Utils_Reflection::setRestrictedPropertyValue($this->_helper, '_logger', null);
+		$this->assertSame($this->_helper, $this->_helper->log($level, $message, $context));
+	}
+	public function providerLogException()
+	{
+		$e = new Exception('Test Exception');
+		return [
+			[$e, ['key_1' => 'Key 1', 'key_2' => 'Key 2']],
+		];
+	}
+	/**
+	 * Test the method EbayEnterprise_MageLog_Helper_Data::logException when invoked
+	 * will call the EbayEnterprise_MageLog_Model_Logger::logException passing the proper
+	 * parameters.
+	 * @param Exception $exception
+	 * @param array $context
+	 * @dataProvider providerLogException
+	 */
+	public function testLogException(Exception $exception, array $context)
+	{
+		$logger = $this->getModelMock('ebayenterprise_magelog/logger', ['logException']);
+		$logger->expects($this->once())
+			->method('logException')
+			->with($this->identicalTo($exception), $this->identicalTo($context))
+			->will($this->returnSelf());
+		$this->replaceByMock('model', 'ebayenterprise_magelog/logger', $logger);
+		EcomDev_Utils_Reflection::setRestrictedPropertyValue($this->_helper, '_logger', null);
+		$this->assertSame($this->_helper, $this->_helper->logException($exception, $context));
 	}
 }
-

@@ -20,9 +20,9 @@
 	</modules>
 	<global>
 		<models>
-			<magelog>
+			<ebayenterprise_magelog>
 				<class>EbayEnterprise_MageLog_Model</class>
-			</magelog>
+			</ebayenterprise_magelog>
 		</models>
 		<helpers>
 			<ebayenterprise_magelog>
@@ -35,26 +35,6 @@
 			</core>
 		</log>
 	</global>
-	<frontend>
-		<routers>
-			<magelog>
-				<args>
-					<modules>
-						<EbayEnterprise_MageLog before="Mage_MageLog">EbayEnterprise_MageLog</EbayEnterprise_MageLog>
-					</modules>
-				</args>
-			</magelog>
-		</routers>
-	</frontend>
-	<adminhtml>
-		<layout>
-			<updates>
-				<ebayenterprise_magelog>
-					<file>ebayenterprise_magelog.xml</file>
-				</ebayenterprise_magelog>
-			</updates>
-		</layout>
-	</adminhtml>
 	<default>
 		<dev>
 			<log>
