@@ -54,6 +54,15 @@ class EbayEnterprise_MageLog_Test_Model_LoggerTest extends EcomDev_PHPUnit_Test_
 	 */
 	public function testLoggerLogMethod($message, $level, $file, $forceLog, array $context)
 	{
+		$stream = $this->getModelMockBuilder('ebayenterprise_magelog/stream')
+			// see EbayEnterprise_MageLog_Model_Stream::__construct method, it calls the parent
+			// Zend_Log_Writer_Stream::__construct method which causes 'Zend_Log_Exception' to be
+			// thrown, when the log file doesn't exists.
+			->disableOriginalConstructor()
+			->setMethods(null)
+			->getMock();
+		$this->replaceByMock('model', 'ebayenterprise_magelog/stream', $stream);
+
 		$logFile = 'system.log';
 		// Mocking this class in order to prevent it from creating log directory and log files.
 		$file = $this->getModelMock('ebayenterprise_magelog/logger_file', ['_createLogDirectory', '_createLogFile', 'getFallbackFile']);

@@ -73,7 +73,7 @@ class EbayEnterprise_MageLog_Helper_Data implements LoggerInterface
 	 * @param  array  $context
 	 * @return self
 	 */
-	public function log($level=Zend_Log::DEBUG, $message, array $context=[])
+	public function log($level, $message, array $context=[])
 	{
 		$this->_getLogger()->log($message, $this->_translateLevel($level), '', false, $context);
 		return $this;
