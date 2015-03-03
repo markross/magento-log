@@ -82,11 +82,9 @@ class EbayEnterprise_MageLog_Model_Logger
 	 */
 	protected function _setupLog($file)
 	{
-		if (!isset($this->_loggers[$file])) {
-			$stream = $this->_getNewStream($file)
-				->setFormatter($this->_formatter);
-			$this->_loggers[$file] = $this->_getNewZenLog($stream);
-		}
+		$stream = $this->_getNewStream($file)
+			->setFormatter($this->_formatter);
+		$this->_loggers[$file] = $this->_getNewZenLog($stream);
 		return $this;
 	}
 	/**

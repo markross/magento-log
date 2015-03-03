@@ -1,0 +1,4 @@
+config:
+  default/web/unsecure/base_url: 'http://example.com'
+  default/web/secure/base_url: 'http://example.com'
+  default/meta_data/context/data_center: 'internal'

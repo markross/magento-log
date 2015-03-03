@@ -17,9 +17,9 @@ use Psr\Log\LogLevel;
 
 class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_Simple
 {
-	const APPLICATION_NAME = 'webstore';
+	const APPLICATION_NAME = 'Magento Webstore';
 	const LOG_TYPE = 'error';
-	const APP_CONTEXT = 'interactive';
+	const APP_CONTEXT = 'external';
 
 	/** @var array $_metaData */
 	protected $_metaData = [];
@@ -45,12 +45,13 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
 	public function format($event)
 	{
 		$this->_metaData = $event;
-		$this->_addApplicationName()
+		$this->_addAppName()
 			->_addLogType()
 			->_addAppContext()
 			->_addHost()
 			->_addLevel()
 			->_addExceptionInformation()
+			->_interpolate()
 			->_cleanMetaData();
 
 		return json_encode($this->_metaData) . PHP_EOL;
@@ -59,10 +60,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
 	 * Add application name key to the meta data array.
 	 * @return self
 	 */
-	protected function _addApplicationName()
+	protected function _addAppName()
 	{
-		if (!isset($this->_metaData['application-name'])) {
-			$this->_metaData['application-name'] = static::APPLICATION_NAME;
+		if (!isset($this->_metaData['app_name'])) {
+			$this->_metaData['app_name'] = static::APPLICATION_NAME;
 		}
 		return $this;
 	}
@@ -83,8 +84,8 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
 	 */
 	protected function _addAppContext()
 	{
-		if (!isset($this->_metaData['appContext'])) {
-			$this->_metaData['appContext'] = static::APP_CONTEXT;
+		if (!isset($this->_metaData['app_context'])) {
+			$this->_metaData['app_context'] = static::APP_CONTEXT;
 		}
 		return $this;
 	}
@@ -157,9 +158,9 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
 	 */
 	protected function _addExceptionKeys($class, $message, $stacktrace)
 	{
-		$this->_metaData['exception.exception_class'] = $class;
-		$this->_metaData['exception.exception_message'] = $message;
-		$this->_metaData['exception.stacktrace'] = $stacktrace;
+		$this->_metaData['exception_class'] = $class;
+		$this->_metaData['exception_message'] = $message;
+		$this->_metaData['exception_stacktrace'] = $stacktrace;
 		return $this;
 	}
 	/**
@@ -227,6 +228,19 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
 				unset($this->_metaData[$key]);
 			}
 		}
+		return $this;
+	}
+	/**
+	 * Replace any brace place holder with key value from the passed in data parameter.
+	 * @return self
+	 */
+	protected function _interpolate()
+	{
+		$message = $this->_metaData['message'];
+		foreach ($this->_metaData as $key => $value) {
+			$message = str_replace('{' . $key .'}', $value, $message);
+		}
+		$this->_metaData['message'] = $message;
 		return $this;
 	}
 }

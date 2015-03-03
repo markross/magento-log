@@ -23,6 +23,13 @@ class EbayEnterprise_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_C
 	{
 		parent::setUp();
 		$this->_helper = Mage::helper('ebayenterprise_magelog');
+
+		// suppressing the real session from starting
+		$session = $this->getModelMockBuilder('core/session')
+			->disableOriginalConstructor()
+			->setMethods(null)
+			->getMock();
+		$this->replaceByMock('singleton', 'core/session', $session);
 	}
 	/**
 	 * Provide arguments for testing log methods.
@@ -78,6 +85,7 @@ class EbayEnterprise_MageLog_Test_Helper_DataTest extends EcomDev_PHPUnit_Test_C
 	{
 		$file = '';
 		$forceLog = false;
+		$context = $this->_helper->getContext()->getMetaData(__CLASS__, $context );
 		$logger = $this->getModelMock('ebayenterprise_magelog/logger', ['log']);
 		$logger->expects($this->once())
 			->method('log')

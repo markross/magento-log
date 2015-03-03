@@ -30,6 +30,8 @@ class EbayEnterprise_MageLog_Helper_Data implements LoggerInterface
 
 	/** @var EbayEnterprise_MageLog_Model_Logger $_logger */
 	protected $_logger;
+	/** @var EbayEnterprise_Eb2cCore_Helper_Context */
+	protected $_context;
 	/** @var array $_psrLogLevelToZend */
 	protected $_psrLogLevelToZend = [
 		LogLevel::EMERGENCY  => Zend_Log::EMERG,
@@ -42,6 +44,18 @@ class EbayEnterprise_MageLog_Helper_Data implements LoggerInterface
 		LogLevel::DEBUG      => Zend_Log::DEBUG,
 	];
 
+	/**
+	 * Stash the instance of 'ebayenterprise_magelog/context' helper into
+	 * the '_context' class property.
+	 * @return EbayEnterprise_Eb2cCore_Helper_Context
+	 */
+	public function getContext()
+	{
+		if (!$this->_context) {
+			$this->_context = Mage::helper('ebayenterprise_magelog/context');
+		}
+		return $this->_context;
+	}
 	/**
 	 * Stash the instance of 'ebayenterprise_magelog/log' model into
 	 * the '_logger' class property.

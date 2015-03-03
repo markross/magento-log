@@ -1,0 +1,10 @@
+test-system-log:
+  app_context: php
+  app_name: Magento Webstore
+  data_center: example.com
+  host: example.com
+  log_type: system
+  resource: EbayEnterprise_MageLog
+  app_request_url: http://example.com
+  rom_request_url: 'amqp://localhost'
+test-exception-log:

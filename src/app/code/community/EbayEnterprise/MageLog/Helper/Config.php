@@ -1,14 +1,14 @@
 <?php
 /**
  * Copyright (c) 2013-2014 eBay Enterprise, Inc.
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the Open Software License (OSL 3.0)
  * that is bundled with this package in the file LICENSE.md.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/osl-3.0.php
- * 
+ *
  * @copyright   Copyright (c) 2013-2014 eBay Enterprise, Inc. (http://www.ebayenterprise.com/)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -23,6 +23,9 @@ class EbayEnterprise_MageLog_Helper_Config
 	const MAGELOG_DEV_LOG_LOGGING_EMAIL_ADDRESS = 'dev/log/logging_email_address';
 	const MAGELOG_DEV_LOG_EMAIL_LOGGING_LEVEL = 'dev/log/email_logging_level';
 	const MAGELOG_DEV_LOG_FROM_EMAIL = 'trans_email/ident_general/email';
+	const APP_NAME = 'meta_data/context/app_name';
+	const APP_CONTEXT = 'meta_data/context/app_context';
+	const DATA_CENTER = 'meta_data/context/data_center';
 	/**
 	 * Determine whether logging is active.
 	 *
@@ -113,5 +116,35 @@ class EbayEnterprise_MageLog_Helper_Config
 	public function getLogFile()
 	{
 		return Mage::getBaseDir('log') . DS . $this->getSystemLogFile();
+	}
+	/**
+	 * Retrieve the logger context app name.
+	 *
+	 * @param mixed $store
+	 * @return string
+	 */
+	public function getAppName($store=null)
+	{
+		return Mage::getStoreConfig(self::APP_NAME, $store);
+	}
+	/**
+	 * Retrieve the logger app context.
+	 *
+	 * @param mixed $store
+	 * @return string
+	 */
+	public function getAppContext($store=null)
+	{
+		return Mage::getStoreConfig(self::APP_CONTEXT, $store);
+	}
+	/**
+	 * Retrieve the logger app context.
+	 *
+	 * @param mixed $store
+	 * @return string
+	 */
+	public function getDataCenter($store=null)
+	{
+		return Mage::getStoreConfig(self::DATA_CENTER, $store);
 	}
 }
