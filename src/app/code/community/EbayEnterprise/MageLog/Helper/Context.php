@@ -27,7 +27,7 @@ class EbayEnterprise_MageLog_Helper_Context
 	const KEY_HOST = 'host';
 	const KEY_LOG_TYPE = 'log_type';
 	const KEY_RESOURCE = 'resource';
-
+	const KEY_RESOURCE_CLASS = 'resource_class';
 	const KEY_APP_REQUEST_URL = 'app_request_url';
 	const KEY_EXCEPTION_CLASS = 'exception_class';
 	const KEY_EXCEPTION_MESSAGE = 'exception_message';
@@ -87,6 +87,7 @@ class EbayEnterprise_MageLog_Helper_Context
 			static::KEY_HOST => $this->_getHostname(),
 			static::KEY_LOG_TYPE => $exception ? static::EXCEPTION_LOG_TYPE : static::SYSTEM_LOG_TYPE,
 			static::KEY_RESOURCE => $this->_getResource($className),
+			static::KEY_RESOURCE_CLASS => $className,
 		];
 	}
 	/**
@@ -191,6 +192,6 @@ class EbayEnterprise_MageLog_Helper_Context
 	protected function _getOptionalSessionData()
 	{
 		$sessionId = Mage::getSingleton('core/session')->getSessionId();
-		return $sessionId ? [static::KEY_SESSION_ID => md5($sessionId)] : [];
+		return $sessionId ? [static::KEY_SESSION_ID => hash('sha256', $sessionId)] : [];
 	}
 }

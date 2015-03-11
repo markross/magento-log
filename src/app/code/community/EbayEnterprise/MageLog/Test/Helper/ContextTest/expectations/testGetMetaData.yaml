@@ -5,6 +5,7 @@ test-system-log:
   host: example.com
   log_type: system
   resource: EbayEnterprise_MageLog
+  resource_class: EbayEnterprise_MageLog_Model_SomeClass
   app_request_url: http://example.com
   rom_request_url: 'amqp://localhost'
 test-exception-log:
