@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [2.0.0] - 2015-02-26
+## [2.0.0] - 2015-03-12
 ### Changed
 - Refactored to be PSR-3 compliant
 
