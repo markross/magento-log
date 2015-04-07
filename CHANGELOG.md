@@ -1,9 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [2.0.2] - 2015-04-07
+## UNRELEASED
 ### Fixed
-- Prevent Undefined Index Edge Case
+- Prevent an edge case that could cause an undifined index error
 
 ## [2.0.1] - 2015-03-12
 ### Fixed
