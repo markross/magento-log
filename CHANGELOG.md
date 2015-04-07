@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2015-04-07
+### Fixed
+- Prevent Undefined Index Edge Case
+
 ## [2.0.1] - 2015-03-12
 ### Fixed
 - Require psr/log in composer.json

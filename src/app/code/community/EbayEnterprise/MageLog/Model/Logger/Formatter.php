@@ -170,7 +170,7 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
 	 */
 	protected function _getExceptionClass(array $stacktrace)
 	{
-		return !empty($stacktrace) ? $stacktrace[0]['class'] : null;
+		return isset($stacktrace[0]['class']) ? $stacktrace[0]['class'] : null;
 	}
 	/**
 	 * Extrapolate the exception data from a passed in array.

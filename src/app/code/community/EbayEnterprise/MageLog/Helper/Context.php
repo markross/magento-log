@@ -169,7 +169,7 @@ class EbayEnterprise_MageLog_Helper_Context
 	 */
 	protected function _getExceptionClass(array $stacktrace)
 	{
-		return !empty($stacktrace) ? $stacktrace[0]['class'] : null;
+		return isset($stacktrace[0]['class']) ? $stacktrace[0]['class'] : null;
 	}
 	/**
 	 * @param  array $data
