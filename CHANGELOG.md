@@ -1,9 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## UNRELEASED
+## [2.0.2] - 2015-04-09
 ### Fixed
-- Prevent an edge case that could cause an undifined index error
+- Edge case that causes an undefined index error
 
 ## [2.0.1] - 2015-03-12
 ### Fixed
@@ -17,5 +17,6 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release/tag
 
+[2.0.2]: https://github.com/eBayEnterprise/magento-log/compare/2.0.2...2.0.1
 [2.0.1]: https://github.com/eBayEnterprise/magento-log/compare/2.0.1...2.0.0
 [2.0.0]: https://github.com/eBayEnterprise/magento-log/compare/2.0.0...1.0.0
