@@ -115,7 +115,7 @@ class EbayEnterprise_MageLog_Helper_Context
 	protected function _getOptionalExceptionData(Exception $exception=null)
 	{
 		return $exception ? [
-			static::KEY_EXCEPTION_CLASS => $this->_getExceptionClass($exception->getTrace()) ?: $exception->getFile(),
+			static::KEY_EXCEPTION_CLASS => get_class($exception),
 			static::KEY_EXCEPTION_MESSAGE => $exception->getMessage(),
 			static::KEY_EXCEPTION_STACKTRACE => $exception->getTraceAsString(),
 		] : [];
@@ -161,15 +161,6 @@ class EbayEnterprise_MageLog_Helper_Context
 		$data = explode('.', $hostname);
 		$size = count($data);
 		return ($size > 1) ? $data[$size - 2] . '.' . $data[$size - 1] : $hostname;
-	}
-	/**
-	 * Get the exception class.
-	 * @param  array $stacktrace
-	 * @return string | null
-	 */
-	protected function _getExceptionClass(array $stacktrace)
-	{
-		return isset($stacktrace[0]['class']) ? $stacktrace[0]['class'] : null;
 	}
 	/**
 	 * @param  array $data
