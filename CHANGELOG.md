@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2015-08-28
+### Fixed
+- Logging the wrong exception class in log context data
+
 ## [2.0.2] - 2015-04-09
 ### Fixed
 - Edge case that causes an undefined index error
@@ -17,6 +21,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release/tag
 
+[2.0.3]: https://github.com/eBayEnterprise/magento-log/compare/2.0.3...2.0.2
 [2.0.2]: https://github.com/eBayEnterprise/magento-log/compare/2.0.2...2.0.1
 [2.0.1]: https://github.com/eBayEnterprise/magento-log/compare/2.0.1...2.0.0
 [2.0.0]: https://github.com/eBayEnterprise/magento-log/compare/2.0.0...1.0.0
