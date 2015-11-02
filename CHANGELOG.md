@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.4] - 2015-11-03
+### Fixed
+- Suppress notices that violate PSR-3
+
 ## [2.0.3] - 2015-08-28
 ### Fixed
 - Logging the wrong exception class in log context data
@@ -21,7 +25,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release/tag
 
-[2.0.3]: https://github.com/eBayEnterprise/magento-log/compare/2.0.3...2.0.2
-[2.0.2]: https://github.com/eBayEnterprise/magento-log/compare/2.0.2...2.0.1
-[2.0.1]: https://github.com/eBayEnterprise/magento-log/compare/2.0.1...2.0.0
-[2.0.0]: https://github.com/eBayEnterprise/magento-log/compare/2.0.0...1.0.0
+[2.0.4]: https://github.com/eBayEnterprise/magento-log/compare/2.0.3...2.0.4
+[2.0.3]: https://github.com/eBayEnterprise/magento-log/compare/2.0.2...2.0.3
+[2.0.2]: https://github.com/eBayEnterprise/magento-log/compare/2.0.1...2.0.2
+[2.0.1]: https://github.com/eBayEnterprise/magento-log/compare/2.0.0...2.0.1
+[2.0.0]: https://github.com/eBayEnterprise/magento-log/compare/1.0.0...2.0.0

@@ -1,0 +1,14 @@
+machine:
+    php:
+        version: 5.4.37
+dependencies:
+    cache_directories:
+        - ../.composer
+    pre:
+        - circle-ci/magento-install
+        - mkdir ../build && rsync -a ../magento/ ../build
+    override:
+        - circle-ci/setup
+test:
+    override:
+        - cd ../build && phpunit --debug --log-junit $CIRCLE_TEST_REPORTS/phpunit/magento-log.xml
