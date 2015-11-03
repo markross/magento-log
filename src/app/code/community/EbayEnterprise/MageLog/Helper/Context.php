@@ -68,7 +68,7 @@ class EbayEnterprise_MageLog_Helper_Context
             $this->_getRequiredData($className, $data, $exception),
             $this->_getOptionalAppRequestUrl(),
             $this->_getOptionalExceptionData($exception),
-            $this->_getOptionalRomData($data),
+            $data,
             $this->_getOptionalSessionData()
         );
     }
@@ -161,20 +161,6 @@ class EbayEnterprise_MageLog_Helper_Context
         $data = explode('.', $hostname);
         $size = count($data);
         return ($size > 1) ? $data[$size - 2] . '.' . $data[$size - 1] : $hostname;
-    }
-    /**
-     * @param  array $data
-     * @return array
-     */
-    protected function _getOptionalRomData(array $data=[])
-    {
-        $optional = [];
-        foreach ($data as $key => $value) {
-            if (!is_null($value)) {
-                $optional[$key] = $value;
-            }
-        }
-        return $optional;
     }
     /**
      * @param  array $data

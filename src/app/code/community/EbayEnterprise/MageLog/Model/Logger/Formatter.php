@@ -238,8 +238,11 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
     {
         $message = $this->_metaData['message'];
         foreach ($this->_metaData as $key => $value) {
-            // PSR-3 says we MUST NOT throw an exception nor raise any php error, warning or notice.
-            $message = @str_replace('{' . $key .'}', $value, $message);
+            $placeHolder = '{' . $key .'}';
+            if (strpos($message, $placeHolder) !== false) {
+                // PSR-3 says we MUST NOT throw an exception nor raise any php error, warning or notice.
+                $message = @str_replace($placeHolder, $value, $message);
+            }
         }
         $this->_metaData['message'] = $message;
         return $this;
