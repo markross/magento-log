@@ -39,6 +39,7 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
      * @see Zend_Log_Formatter_Simple::format
      * Overriding this method in order to format the log message
      * in PSR-3 Distributed Logging Architecture and Standard format.
+     *
      * @param  array  $event
      * @return string
      */
@@ -53,11 +54,12 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
             ->_addExceptionInformation()
             ->_interpolate()
             ->_cleanMetaData();
-
         return json_encode($this->_metaData) . PHP_EOL;
     }
+
     /**
      * Add application name key to the meta data array.
+     *
      * @return self
      */
     protected function _addAppName()
@@ -67,8 +69,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * Add log type key to the meta data array.
+     *
      * @return self
      */
     protected function _addLogType()
@@ -78,8 +82,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * Add app context key to the meta data array.
+     *
      * @return self
      */
     protected function _addAppContext()
@@ -89,8 +95,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * Add host key to the meta data array.
+     *
      * @return self
      */
     protected function _addHost()
@@ -100,8 +108,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * Translate Zend Log level back to PSR-3 level.
+     *
      * @param string $level
      * @return int
      */
@@ -111,8 +121,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
             ? $this->_zendLogLevelToPsr[$level]
             : LogLevel::DEBUG;
     }
+
     /**
      * Add level key to the meta data array.
+     *
      * @return self
      */
     protected function _addLevel()
@@ -123,23 +135,38 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * Add exception information keys to the meta data array.
+     *
      * @return self
      */
     protected function _addExceptionInformation()
     {
         if (isset($this->_metaData['exception'])) {
-            $e = $this->_metaData['exception'];
-            $class = $this->_getExceptionClass($e->getTrace()) ?: $e->getFile();
-            $this->_addExceptionKeys($class, $e->getMessage(), $e->getTraceAsString());
-        } elseif ($this->_hasExceptionMessage()) {
+            $exception = $this->_metaData['exception'];
+            if ($exception instanceof Exception) {
+                $class = $this->_getExceptionClass($exception);
+                $this->_addExceptionKeys($class, $exception->getMessage(), $exception->getTraceAsString());
+                return $this;
+            }
+            try {
+                $this->_metaData['exception_message'] = (string) $exception;
+            } catch (Exception $innerException) {
+                $this->_metaData['logger_exception'] = $innerException;
+                $this->_metaData['logger_exception_message'] = 'Unable to log exception metadata: not a string or Exception instance.';
+            }
+            return $this;
+        }
+        if ($this->_hasExceptionMessage()) {
             $this->_extrapolateExceptionInfo(explode("\nStack trace:\n", $this->_metaData['message']));
         }
         return $this;
     }
+
     /**
      * Check if log has exception messages.
+     *
      * @return bool
      */
     protected function _hasExceptionMessage()
@@ -150,6 +177,7 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
             && (count(explode("\nStack trace:\n", $this->_metaData['message'])) > 1)
         );
     }
+
     /**
      * @param  string $class
      * @param  string $message
@@ -163,17 +191,25 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         $this->_metaData['exception_stacktrace'] = $stacktrace;
         return $this;
     }
+
     /**
      * Get the exception class.
-     * @param array $stacktrace
+     *
+     * @param Exception $exception
      * @return string | null
      */
-    protected function _getExceptionClass(array $stacktrace)
+    protected function _getExceptionClass(Exception $exception)
     {
-        return isset($stacktrace[0]['class']) ? $stacktrace[0]['class'] : null;
+        $stacktrace = $exception->getTrace();
+        if ($stacktrace && isset($stacktrace[0]['class'])) {
+            return $stacktrace[0]['class'];
+        }
+        return $exception->getFile();
     }
+
     /**
      * Extrapolate the exception data from a passed in array.
+     *
      * @param array $info
      * @return self
      */
@@ -187,6 +223,7 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * @param array $info
      * @return string | null
@@ -201,6 +238,7 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $class;
     }
+
     /**
      * @param array $info
      * @return string | null
@@ -209,6 +247,7 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
     {
         return (count($info) > 1) ? str_replace("\n", '', $info[0]) : null;
     }
+
     /**
      * @param array $info
      * @return string | null
@@ -217,8 +256,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
     {
         return (count($info) > 1) ? $info[1] : null;
     }
+
     /**
      * Remove any non Distributed Logging Architecture keys from the meta-data.
+     *
      * @return self
      */
     protected function _cleanMetaData()
@@ -230,8 +271,10 @@ class EbayEnterprise_MageLog_Model_Logger_Formatter extends Zend_Log_Formatter_S
         }
         return $this;
     }
+
     /**
      * Replace any brace place holder with key value from the passed in data parameter.
+     *
      * @return self
      */
     protected function _interpolate()

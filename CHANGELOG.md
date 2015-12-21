@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.6] - 2016-01-05
+### Fixed
+- Avoid causing any exception when logging an exception
+
 ## [2.0.5] - 2015-11-05
 ### Fixed
 - Ensure any primitive and complex data type passed to the log context are logged properly.
@@ -29,6 +33,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release/tag
 
+[2.0.6]: https://github.com/eBayEnterprise/magento-log/compare/2.0.5...2.0.6
 [2.0.5]: https://github.com/eBayEnterprise/magento-log/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/eBayEnterprise/magento-log/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/eBayEnterprise/magento-log/compare/2.0.2...2.0.3
