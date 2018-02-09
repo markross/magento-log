@@ -44,6 +44,8 @@ class EbayEnterprise_MageLog_Helper_Data implements LoggerInterface
         LogLevel::DEBUG      => Zend_Log::DEBUG,
     ];
 
+    private $logFile = '';
+
     /**
      * Stash the instance of 'ebayenterprise_magelog/context' helper into
      * the '_context' class property.
@@ -56,6 +58,13 @@ class EbayEnterprise_MageLog_Helper_Data implements LoggerInterface
         }
         return $this->_context;
     }
+
+    public function setFile($file)
+    {
+        $this->logFile = $file;
+    }
+
+
     /**
      * Stash the instance of 'ebayenterprise_magelog/log' model into
      * the '_logger' class property.
@@ -89,7 +98,7 @@ class EbayEnterprise_MageLog_Helper_Data implements LoggerInterface
      */
     public function log($level, $message, array $context=[])
     {
-        $this->_getLogger()->log($message, $this->_translateLevel($level), '', false, $this->_normalizeContext($context));
+        $this->_getLogger()->log($message, $this->_translateLevel($level), $this->logFile, false, $this->_normalizeContext($context));
         return $this;
     }
     /**
